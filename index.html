@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Copilot — AI-Powered Trade Operations Platform</title>
+<meta name="description" content="Generate export and import documents in seconds. Approve and send with one AI copilot command. Built for freight brokers, exporters, and 3PLs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1B2A;
+  --navy-mid:#1A2E42;
+  --navy-light:#243D55;
+  --teal:#1D9E75;
+  --teal-light:#5DCAA5;
+  --teal-pale:#E1F5EE;
+  --slate:#8BA3BC;
+  --white:#FFFFFF;
+  --off-white:#F7F9FC;
+  --border:#1E3247;
+  --text-muted:#6B8299;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);line-height:1.6;overflow-x:hidden}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,27,42,0.95);backdrop-filter:blur(8px);z-index:100}
+.logo{font-size:15px;font-weight:500;letter-spacing:0.02em;color:var(--white)}
+.logo span{color:var(--teal)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:14px;color:var(--slate);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--teal);color:var(--white);padding:0.5rem 1.25rem;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#168a63}
+
+.hero{padding:7rem 2.5rem 5rem;max-width:1100px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--navy-mid);border:1px solid var(--border);border-radius:100px;padding:0.35rem 1rem;font-size:12px;font-family:'DM Mono',monospace;color:var(--teal-light);margin-bottom:2rem;letter-spacing:0.05em}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;line-height:1.15;letter-spacing:-0.02em;max-width:820px;margin-bottom:1.5rem}
+.hero h1 strong{font-weight:500;color:var(--teal-light)}
+.hero-sub{font-size:1.1rem;color:var(--slate);max-width:560px;margin-bottom:2.5rem;line-height:1.7}
+.hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:var(--white);padding:0.8rem 1.75rem;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s;display:inline-block}
+.btn-primary:hover{background:#168a63}
+.btn-ghost{color:var(--slate);font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.btn-ghost:hover{color:var(--white)}
+.hero-proof{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.proof-stat{text-align:left}
+.proof-num{font-size:1.6rem;font-weight:500;color:var(--white)}
+.proof-label{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+.section{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--teal);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-0.02em;margin-bottom:1rem}
+.section-title strong{font-weight:500}
+.section-sub{color:var(--slate);max-width:520px;line-height:1.7;margin-bottom:3rem}
+
+.terminal{background:var(--navy-mid);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:3rem 0}
+.terminal-bar{padding:0.75rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-red{background:#FF5F57}.t-amber{background:#FFBD2E}.t-green{background:#28CA41}
+.terminal-body{padding:1.5rem;font-family:'DM Mono',monospace;font-size:13px;line-height:2}
+.t-prompt{color:var(--teal)}.t-cmd{color:var(--white)}.t-out{color:var(--slate)}.t-success{color:var(--teal-light)}
+
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:3rem}
+.feature-card{background:var(--navy);padding:2rem;transition:background .2s}
+.feature-card:hover{background:var(--navy-mid)}
+.feature-icon{width:36px;height:36px;border-radius:8px;background:var(--navy-mid);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.feature-icon svg{width:18px;height:18px;stroke:var(--teal-light);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.feature-title{font-size:15px;font-weight:500;margin-bottom:0.5rem}
+.feature-desc{font-size:13px;color:var(--slate);line-height:1.6}
+
+.docs-strip{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0}
+.doc-pill{background:var(--navy-mid);border:1px solid var(--border);border-radius:100px;padding:0.5rem 1.1rem;font-size:13px;color:var(--slate);display:flex;align-items:center;gap:8px}
+.doc-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.price-card{background:var(--navy-mid);border:1px solid var(--border);border-radius:12px;padding:2rem}
+.price-card.featured{border-color:var(--teal);background:var(--navy-light)}
+.price-tag{font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.08em;color:var(--teal);text-transform:uppercase;margin-bottom:1rem}
+.price-name{font-size:18px;font-weight:500;margin-bottom:0.5rem}
+.price-amount{font-size:2.5rem;font-weight:300;letter-spacing:-0.03em;margin:1rem 0 0.25rem}
+.price-amount sup{font-size:1rem;vertical-align:super}
+.price-amount sub{font-size:0.9rem;color:var(--slate)}
+.price-setup{font-size:12px;color:var(--text-muted);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem}
+.price-features li{font-size:13px;color:var(--slate);display:flex;align-items:flex-start;gap:10px}
+.check{width:14px;height:14px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center}
+.check::after{content:'';width:5px;height:3px;border-left:1.5px solid white;border-bottom:1.5px solid white;transform:rotate(-45deg);margin-top:-1px}
+.price-btn{display:block;text-align:center;padding:0.75rem;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s}
+.price-btn-outline{border:1px solid var(--border);color:var(--slate)}
+.price-btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.price-btn-fill{background:var(--teal);color:var(--white)}
+.price-btn-fill:hover{background:#168a63}
+
+.how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:3rem;counter-reset:steps}
+.how-step{counter-increment:steps;position:relative}
+.how-step::before{content:counter(steps,'0'counter(steps));font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.05em;display:block;margin-bottom:1rem}
+.how-step h3{font-size:15px;font-weight:500;margin-bottom:0.5rem}
+.how-step p{font-size:13px;color:var(--slate);line-height:1.6}
+
+.cta-section{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2.5rem;text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:300;letter-spacing:-0.02em;margin-bottom:1rem}
+.cta-section h2 strong{font-weight:500;color:var(--teal-light)}
+.cta-section p{color:var(--slate);margin-bottom:2rem}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+footer{padding:3rem 2.5rem;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-size:14px;font-weight:500;color:var(--slate)}
+.footer-logo span{color:var(--teal)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--slate)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp 0.6s ease forwards;opacity:0}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
+
+@media(max-width:640px){
+  nav{padding:1rem 1.25rem}
+  .nav-links{display:none}
+  .hero{padding:4rem 1.25rem 3rem}
+  .section{padding:3rem 1.25rem}
+  .hero-proof{gap:1.25rem}
+  footer{padding:2rem 1.25rem;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Trade<span>Copilot</span></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://app.trade-copilot.com" target="_blank" class="nav-cta">Sign in</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow fade-up">
+    <span class="hero-dot"></span>
+    AI-powered · Live on app.trade-copilot.com
+  </div>
+  <h1 class="fade-up delay-1">Trade documents.<br><strong>Generated in seconds.</strong><br>Sent by your AI copilot.</h1>
+  <p class="hero-sub fade-up delay-2">Generate Commercial Invoices, Packing Lists, Certificates of Origin, and Bills of Lading — then approve and send them with a single copilot command. Built for exporters, importers, freight brokers, and 3PLs.</p>
+  <div class="hero-actions fade-up delay-3">
+    <a href="https://app.trade-copilot.com" class="btn-primary" target="_blank">Start free 14-day trial</a>
+    <a href="#how" class="btn-ghost">See how it works →</a>
+  </div>
+  <div class="hero-proof fade-up delay-3">
+    <div class="proof-stat"><div class="proof-num">4</div><div class="proof-label">Trade docs generated automatically</div></div>
+    <div class="proof-stat"><div class="proof-num">&lt;60s</div><div class="proof-label">From order upload to sent documents</div></div>
+    <div class="proof-stat"><div class="proof-num">AI</div><div class="proof-label">Copilot approves, sends, tracks</div></div>
+  </div>
+</div>
+
+<div style="background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem 2.5rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:1rem;font-family:'DM Mono',monospace;letter-spacing:0.05em">DOCUMENTS GENERATED AUTOMATICALLY</p>
+    <div class="docs-strip">
+      <div class="doc-pill"><span class="doc-pill-dot"></span>Commercial Invoice (CI)</div>
+      <div class="doc-pill"><span class="doc-pill-dot"></span>Packing List (PL)</div>
+      <div class="doc-pill"><span class="doc-pill-dot"></span>Certificate of Origin (CO)</div>
+      <div class="doc-pill"><span class="doc-pill-dot"></span>Bill of Lading (BOL)</div>
+      <div class="doc-pill" style="border-style:dashed;color:var(--text-muted)">+ more on request</div>
+    </div>
+  </div>
+</div>
+
+<div class="terminal" style="max-width:1100px;margin:3rem 2.5rem">
+  <div class="terminal-bar">
+    <div class="t-dot t-red"></div>
+    <div class="t-dot t-amber"></div>
+    <div class="t-dot t-green"></div>
+    <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-left:8px">AI Operations Copilot — app.trade-copilot.com</span>
+  </div>
+  <div class="terminal-body">
+    <div><span class="t-prompt">you → </span><span class="t-cmd">Generate documents for order 100298</span></div>
+    <div><span class="t-out">  ✓ CI_100298.xlsx generated and uploaded</span></div>
+    <div><span class="t-out">  ✓ PL_100298.xlsx generated and uploaded</span></div>
+    <div style="margin-top:0.5rem"><span class="t-prompt">you → </span><span class="t-cmd">Approve order 100298</span></div>
+    <div><span class="t-success">  ✓ Order 100298 approved successfully</span></div>
+    <div style="margin-top:0.5rem"><span class="t-prompt">you → </span><span class="t-cmd">Send documents for order 100298 to buyer@agritools.com</span></div>
+    <div><span class="t-success">  ✓ Email sent — CI + PL attached. 2 documents, 1 command.</span></div>
+  </div>
+</div>
+
+<div class="section" id="features">
+  <p class="section-label">Features</p>
+  <h2 class="section-title">Everything your trade ops team needs.<br><strong>Nothing they don't.</strong></h2>
+  <p class="section-sub">Built for freight brokers, exporters, importers, and 3PLs who are tired of manual document prep and chasing approvals over email.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </div>
+      <div class="feature-title">4-document suite</div>
+      <div class="feature-desc">CI, PL, CO, and BOL generated from a single Excel upload. Fields populated automatically — no copy-pasting between templates.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+      </div>
+      <div class="feature-title">AI copilot agent</div>
+      <div class="feature-desc">Type commands in plain English. Approve orders, send documents, check shipment status, list pending approvals — all from one interface.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="feature-title">Document preview</div>
+      <div class="feature-desc">See a full preview of every document before it's sent — header fields, line items, totals, and automatic warnings for missing data.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      <div class="feature-title">Automated email delivery</div>
+      <div class="feature-desc">Documents sent via Microsoft Graph with Excel attachments. Worker queue handles retries automatically — no more "did you get my email?"</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      </div>
+      <div class="feature-title">Shipment tracking</div>
+      <div class="feature-desc">Real-time status board from Draft through Delivered. Every action logged with a full audit trail — know exactly where every shipment stands.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      </div>
+      <div class="feature-title">Approval workflow</div>
+      <div class="feature-desc">Multi-step approval with role-based access. Documents can't be sent without proper authorization — compliance built into the workflow.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="how">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">From order to sent documents<br><strong>in under 60 seconds.</strong></h2>
+  <p class="section-sub">Upload your order Excel, let the AI generate and validate all documents, approve with one command, done.</p>
+  <div class="how-steps">
+    <div class="how-step">
+      <h3>Upload your order</h3>
+      <p>Upload your order Excel file. The platform reads header info and line items automatically — no reformatting needed.</p>
+    </div>
+    <div class="how-step">
+      <h3>Documents generated</h3>
+      <p>CI, PL, CO, and BOL generated instantly. Preview them before sending — warnings flag any missing or incorrect fields.</p>
+    </div>
+    <div class="how-step">
+      <h3>Copilot approves</h3>
+      <p>Tell the AI copilot to approve the order. It validates, sets status, and queues the email — one command does it all.</p>
+    </div>
+    <div class="how-step">
+      <h3>Email sent automatically</h3>
+      <p>Documents land in your buyer's inbox with Excel attachments. Status updated to Sent. Full audit trail logged.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="pricing">
+  <p class="section-label">Pricing</p>
+  <h2 class="section-title">Simple pricing.<br><strong>No surprises.</strong></h2>
+  <p class="section-sub">Start with a 14-day free trial. No credit card required. Cancel anytime.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tag">Starter</div>
+      <div class="price-name">For solo exporters</div>
+      <div class="price-amount"><sup>$</sup>199<sub>/mo</sub></div>
+      <div class="price-setup">+ $299 one-time setup &nbsp;·&nbsp; $169/mo billed annually</div>
+      <ul class="price-features">
+        <li><span class="check"></span>25 shipments/month</li>
+        <li><span class="check"></span>CI + PL + CO + BOL</li>
+        <li><span class="check"></span>AI Copilot (core commands)</li>
+        <li><span class="check"></span>Shipment status board</li>
+        <li><span class="check"></span>Automated email delivery</li>
+        <li><span class="check"></span>1 user seat</li>
+      </ul>
+      <a href="https://app.trade-copilot.com" class="price-btn price-btn-outline" target="_blank">Start free trial</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-tag">Most popular &nbsp;·&nbsp; Pro</div>
+      <div class="price-name">For growing teams</div>
+      <div class="price-amount"><sup>$</sup>399<sub>/mo</sub></div>
+      <div class="price-setup">+ $499 one-time setup &nbsp;·&nbsp; $339/mo billed annually</div>
+      <ul class="price-features">
+        <li><span class="check"></span>Unlimited shipments</li>
+        <li><span class="check"></span>All 4 documents</li>
+        <li><span class="check"></span>Full AI Copilot + multi-agent</li>
+        <li><span class="check"></span>Analytics dashboard</li>
+        <li><span class="check"></span>LangSmith audit logs</li>
+        <li><span class="check"></span>3 user seats</li>
+        <li><span class="check"></span>Priority support</li>
+      </ul>
+      <a href="https://app.trade-copilot.com" class="price-btn price-btn-fill" target="_blank">Start free trial</a>
+    </div>
+    <div class="price-card">
+      <div class="price-tag">Enterprise</div>
+      <div class="price-name">For freight forwarders</div>
+      <div class="price-amount"><sup>$</sup>899<sub>/mo</sub></div>
+      <div class="price-setup">+ $999–1,999 setup &nbsp;·&nbsp; Custom annual contracts</div>
+      <ul class="price-features">
+        <li><span class="check"></span>Everything in Pro</li>
+        <li><span class="check"></span>Multi-tenant architecture</li>
+        <li><span class="check"></span>White-label branding</li>
+        <li><span class="check"></span>Custom document templates</li>
+        <li><span class="check"></span>API access</li>
+        <li><span class="check"></span>Unlimited seats + SLA</li>
+      </ul>
+      <a href="mailto:hello@trade-copilot.com" class="price-btn price-btn-outline">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready to automate your<br><strong>trade operations?</strong></h2>
+  <p>14-day free trial. No credit card. Up and running in 5 minutes.</p>
+  <div class="cta-actions">
+    <a href="https://app.trade-copilot.com" class="btn-primary" target="_blank">Start free trial</a>
+    <a href="mailto:hello@trade-copilot.com" class="btn-ghost">Talk to us →</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">Trade<span>Copilot</span></div>
+    <div class="footer-copy" style="margin-top:6px">© 2026 OrchestratorLab · trade-copilot.com</div>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:hello@trade-copilot.com">Contact</a>
+    <a href="https://app.trade-copilot.com" target="_blank">Sign in</a>
+    <a href="https://orchestratorlab.net" target="_blank">OrchestratorLab</a>
+  </div>
+</footer>
+
+</body>
+</html>
