@@ -7,6 +7,7 @@
 <meta name="description" content="Generate export and import documents in seconds. Approve and send with one AI copilot command. Built for freight brokers, exporters, and 3PLs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -119,6 +120,138 @@ footer{padding:3rem 2.5rem;max-width:1100px;margin:0 auto;display:flex;justify-c
 .fade-up{animation:fadeUp 0.6s ease forwards;opacity:0}
 .delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}
 
+/* Chatbot Widget */
+#tc-chat-toggle{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:99999;
+  border:none;
+  background:var(--teal);
+  color:white;
+  padding:14px 18px;
+  border-radius:999px;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  box-shadow:0 14px 35px rgba(0,0,0,.35);
+}
+#tc-chat-widget{
+  position:fixed;
+  right:24px;
+  bottom:86px;
+  width:380px;
+  height:560px;
+  background:#ffffff;
+  color:#0D1B2A;
+  border-radius:18px;
+  box-shadow:0 22px 60px rgba(0,0,0,.45);
+  z-index:99999;
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+}
+#tc-chat-widget.open{display:flex}
+.tc-chat-header{
+  background:#0D1B2A;
+  color:white;
+  padding:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.tc-chat-title{
+  font-weight:500;
+  font-size:15px;
+}
+.tc-chat-status{
+  color:var(--teal-light);
+  font-size:12px;
+  margin-top:2px;
+}
+.tc-chat-close{
+  background:transparent;
+  border:none;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+}
+#tc-messages{
+  flex:1;
+  overflow-y:auto;
+  padding:16px;
+  background:#F7F9FC;
+}
+.tc-message{
+  padding:11px 13px;
+  border-radius:14px;
+  margin-bottom:12px;
+  line-height:1.45;
+  font-size:14px;
+}
+.tc-bot{
+  background:white;
+  border:1px solid #E1E7EF;
+  color:#0D1B2A;
+  margin-right:30px;
+}
+.tc-user{
+  background:#1D9E75;
+  color:white;
+  margin-left:30px;
+}
+.tc-quick-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:12px;
+  border-top:1px solid #E1E7EF;
+  background:white;
+}
+.tc-quick-actions button{
+  border:1px solid #D4DEE9;
+  background:white;
+  color:#0D1B2A;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  cursor:pointer;
+}
+.tc-quick-actions button:hover{
+  border-color:var(--teal);
+  color:var(--teal);
+}
+.tc-chat-input{
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top:1px solid #E1E7EF;
+  background:white;
+}
+#tc-message-input{
+  flex:1;
+  border:1px solid #D4DEE9;
+  border-radius:10px;
+  padding:11px;
+  font-size:14px;
+  font-family:'DM Sans',sans-serif;
+}
+.tc-chat-input button{
+  border:none;
+  background:var(--teal);
+  color:white;
+  border-radius:10px;
+  padding:0 14px;
+  cursor:pointer;
+  font-weight:500;
+}
+.tc-loading{
+  color:#6B8299;
+  font-style:italic;
+}
+
 @media(max-width:640px){
   nav{padding:1rem 1.25rem}
   .nav-links{display:none}
@@ -126,6 +259,17 @@ footer{padding:3rem 2.5rem;max-width:1100px;margin:0 auto;display:flex;justify-c
   .section{padding:3rem 1.25rem}
   .hero-proof{gap:1.25rem}
   footer{padding:2rem 1.25rem;flex-direction:column;align-items:flex-start}
+  #tc-chat-widget{
+    right:12px;
+    left:12px;
+    bottom:80px;
+    width:auto;
+    height:560px;
+  }
+  #tc-chat-toggle{
+    right:16px;
+    bottom:16px;
+  }
 }
 </style>
 </head>
@@ -338,6 +482,104 @@ footer{padding:3rem 2.5rem;max-width:1100px;margin:0 auto;display:flex;justify-c
     <a href="https://orchestratorlab.net" target="_blank">OrchestratorLab</a>
   </div>
 </footer>
+
+<button id="tc-chat-toggle" onclick="toggleChat()">Ask Trade Copilot AI</button>
+
+<div id="tc-chat-widget">
+  <div class="tc-chat-header">
+    <div>
+      <div class="tc-chat-title">Trade Copilot AI</div>
+      <div class="tc-chat-status">Online · Powered by Azure AI</div>
+    </div>
+    <button class="tc-chat-close" onclick="toggleChat()">×</button>
+  </div>
+
+  <div id="tc-messages">
+    <div class="tc-message tc-bot">
+      Hi! Ask me about Trade Copilot, pricing, export documents, Certificates of Origin, or scheduling a demo.
+    </div>
+  </div>
+
+  <div class="tc-quick-actions">
+    <button onclick="quickAsk('What services does Trade Copilot offer?')">Services</button>
+    <button onclick="quickAsk('How much does Trade Copilot cost?')">Pricing</button>
+    <button onclick="quickAsk('Can you help me schedule a demo?')">Book demo</button>
+  </div>
+
+  <div class="tc-chat-input">
+    <input id="tc-message-input" type="text" placeholder="Ask about Trade Copilot...">
+    <button onclick="sendChatMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+const TRADE_COPILOT_API =
+  "https://trade-copilot-chatbot-api-hua6caf8bqhdhbfh.southcentralus-01.azurewebsites.net/chat";
+
+const TRADE_COPILOT_SESSION =
+  "website-" + Math.random().toString(36).substring(2, 10);
+
+function toggleChat(){
+  document.getElementById("tc-chat-widget").classList.toggle("open");
+}
+
+function addChatMessage(text, sender){
+  const messages = document.getElementById("tc-messages");
+  const div = document.createElement("div");
+  div.className = sender === "user"
+    ? "tc-message tc-user"
+    : "tc-message tc-bot";
+  div.innerText = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+function quickAsk(question){
+  document.getElementById("tc-message-input").value = question;
+  sendChatMessage();
+}
+
+async function sendChatMessage(){
+  const input = document.getElementById("tc-message-input");
+  const message = input.value.trim();
+
+  if(!message) return;
+
+  addChatMessage(message, "user");
+  input.value = "";
+
+  const loading = addChatMessage("Thinking...", "bot");
+  loading.classList.add("tc-loading");
+
+  try{
+    const response = await fetch(TRADE_COPILOT_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: message,
+        session_id: TRADE_COPILOT_SESSION
+      })
+    });
+
+    const data = await response.json();
+
+    loading.classList.remove("tc-loading");
+    loading.innerText = data.response || "I could not generate a response.";
+  }catch(error){
+    loading.classList.remove("tc-loading");
+    loading.innerText = "I could not connect right now. Please try again in a moment.";
+  }
+}
+
+document.getElementById("tc-message-input").addEventListener("keydown", function(event){
+  if(event.key === "Enter"){
+    sendChatMessage();
+  }
+});
+</script>
 
 </body>
 </html>
