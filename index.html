@@ -342,6 +342,119 @@
       font-size:15px;
     }
 
+    .workflow-section{
+      background:
+        radial-gradient(circle at 12% 18%,rgba(29,191,159,.12),transparent 28%),
+        radial-gradient(circle at 82% 8%,rgba(37,99,235,.10),transparent 30%),
+        linear-gradient(180deg,#ffffff 0%,#f6f9fc 100%);
+      padding:96px 22px;
+      overflow:hidden;
+    }
+
+    .workflow-track{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:18px;
+      position:relative;
+      align-items:stretch;
+    }
+
+    .workflow-track::before{
+      content:"";
+      position:absolute;
+      top:44px;
+      left:7%;
+      right:7%;
+      height:4px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--teal),var(--blue),var(--teal-2));
+      box-shadow:0 12px 28px rgba(37,99,235,.18);
+      opacity:.85;
+    }
+
+    .workflow-card{
+      position:relative;
+      z-index:1;
+      min-height:238px;
+      background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(248,251,255,.96));
+      border:1px solid rgba(219,231,243,.92);
+      border-radius:22px;
+      padding:22px 18px 20px;
+      box-shadow:0 20px 56px rgba(15,35,70,.12);
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:12px;
+      animation:workflowFadeIn .72s ease both;
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    }
+
+    .workflow-card:nth-child(2){animation-delay:.06s}
+    .workflow-card:nth-child(3){animation-delay:.12s}
+    .workflow-card:nth-child(4){animation-delay:.18s}
+    .workflow-card:nth-child(5){animation-delay:.24s}
+    .workflow-card:nth-child(6){animation-delay:.30s}
+
+    .workflow-card:hover{
+      transform:translateY(-10px);
+      border-color:rgba(29,191,159,.55);
+      box-shadow:0 30px 74px rgba(15,35,70,.18);
+    }
+
+    .workflow-number{
+      width:44px;
+      height:44px;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--navy),var(--navy-3));
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'DM Mono',monospace;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 12px 24px rgba(7,17,31,.24);
+    }
+
+    .workflow-icon{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#e8fff9,#eef4ff);
+      color:var(--navy);
+      font-family:'DM Mono',monospace;
+      font-size:15px;
+      font-weight:800;
+      border:1px solid rgba(29,191,159,.22);
+    }
+
+    .workflow-card h3{
+      color:var(--navy);
+      font-size:18px;
+      line-height:1.15;
+      margin-top:2px;
+    }
+
+    .workflow-card p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    @keyframes workflowFadeIn{
+      from{
+        opacity:0;
+        transform:translateY(18px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
     .incoterms-cta{
       background:linear-gradient(135deg,#07111f,#10243d);
       color:white;
@@ -608,70 +721,29 @@
         left:12px;
         width:auto;
         height:560px;
-
-      .workflow-section{
-        background:linear-gradient(180deg,#ffffff 0%,#f6f9fc 100%);
-        padding:90px 22px;
       }
 
-      .workflow-line{
-        display:grid;
-        grid-template-columns:repeat(6,1fr);
-        gap:18px;
-        position:relative;
+      .workflow-track{
+        grid-template-columns:repeat(2,1fr);
       }
 
-      .workflow-step{
-        background:white;
-        border:1px solid var(--border);
-        border-radius:24px;
-        padding:24px 18px;
-        text-align:center;
-        box-shadow:var(--shadow);
-        transition:.25s ease;
+      .workflow-track::before{
+        top:0;
+        bottom:0;
+        left:22px;
+        right:auto;
+        width:4px;
+        height:auto;
+      }
+    }
+
+    @media(max-width:600px){
+      .workflow-track{
+        grid-template-columns:1fr;
       }
 
-      .workflow-step:hover{
-        transform:translateY(-8px);
-        border-color:var(--teal);
-      }
-
-      .workflow-icon{
-        width:56px;
-        height:56px;
-        border-radius:18px;
-        margin:0 auto 16px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:linear-gradient(135deg,#e8fff9,#eef4ff);
-        font-size:28px;
-      }
-
-      .workflow-step h3{
-        color:var(--navy);
-        font-size:18px;
-        margin-bottom:8px;
-      }
-
-      .workflow-step p{
-        color:var(--muted);
-        font-size:14px;
-        line-height:1.45;
-      }
-
-      @media(max-width:1000px){
-        .workflow-line{
-          grid-template-columns:repeat(2,1fr);
-        }
-      }
-
-      @media(max-width:600px){
-        .workflow-line{
-          grid-template-columns:1fr;
-        }
-      }  
-
+      .workflow-card{
+        min-height:auto;
       }
     }
   </style>
@@ -740,41 +812,47 @@
       </p>
     </div>
 
-    <div class="workflow-line">
-      <div class="workflow-step">
-        <div class="workflow-icon">🧾</div>
+    <div class="workflow-track">
+      <div class="workflow-card">
+        <div class="workflow-number">01</div>
+        <div class="workflow-icon">ORD</div>
         <h3>Order Upload</h3>
-        <p>Import or enter customer orders and shipment details.</p>
+        <p>Import customer orders, shipment references, consignee details, and product data into one workspace.</p>
       </div>
 
-      <div class="workflow-step">
-        <div class="workflow-icon">🏭</div>
+      <div class="workflow-card">
+        <div class="workflow-number">02</div>
+        <div class="workflow-icon">WH</div>
         <h3>Warehouse Prep</h3>
-        <p>Assign dimensions, weights, cartons, and cargo-ready status.</p>
+        <p>Coordinate cartons, dimensions, weights, pallet counts, and cargo-ready status before documents are created.</p>
       </div>
 
-      <div class="workflow-step">
-        <div class="workflow-icon">🤖</div>
+      <div class="workflow-card">
+        <div class="workflow-number">03</div>
+        <div class="workflow-icon">AI</div>
         <h3>AI Documents</h3>
-        <p>Generate CI, PL, CO, BOL, and shipment documents.</p>
+        <p>Generate commercial invoices, packing lists, certificates, BOL data, and shipment forms from approved inputs.</p>
       </div>
 
-      <div class="workflow-step">
-        <div class="workflow-icon">✅</div>
+      <div class="workflow-card">
+        <div class="workflow-number">04</div>
+        <div class="workflow-icon">OK</div>
         <h3>Approval</h3>
-        <p>Review, approve, and control every document before sending.</p>
+        <p>Route drafts through review, exception checks, and final approval before anything leaves your team.</p>
       </div>
 
-      <div class="workflow-step">
-        <div class="workflow-icon">📨</div>
+      <div class="workflow-card">
+        <div class="workflow-number">05</div>
+        <div class="workflow-icon">EML</div>
         <h3>Auto Email</h3>
-        <p>Send approved documents automatically to customers or partners.</p>
+        <p>Send approved document packets to customers, brokers, carriers, and internal stakeholders automatically.</p>
       </div>
 
-      <div class="workflow-step">
-        <div class="workflow-icon">🚢</div>
+      <div class="workflow-card">
+        <div class="workflow-number">06</div>
+        <div class="workflow-icon">TRK</div>
         <h3>Tracking</h3>
-        <p>Monitor shipment status from ready cargo to final delivery.</p>
+        <p>Track handoffs, shipment status, customer communication, and delivery milestones through completion.</p>
       </div>
     </div>
   </div>
