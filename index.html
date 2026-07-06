@@ -529,6 +529,7 @@
       border-radius:15px;
       font-size:14px;
       line-height:1.45;
+      white-space:pre-line;
     }
 
     .tc-bot{
@@ -865,7 +866,7 @@
     const box = document.getElementById("tc-messages");
     const msg = document.createElement("div");
     msg.className = sender === "user" ? "tc-msg tc-user" : "tc-msg tc-bot";
-    msg.innerHTML = text.replace(/\n/g, "<br>");
+    msg.textContent = text;
     box.appendChild(msg);
     box.scrollTop = box.scrollHeight;
     return msg;
@@ -897,7 +898,7 @@
       });
 
       const data = await res.json();
-      loading.innerHTML = (data.response || "I could not answer right now.").replace(/\n/g,"<br>");
+      loading.textContent = data.response || "I could not answer right now.";
 
     }catch(err){
       loading.innerText = "I could not connect right now. Please try again in a moment.";
