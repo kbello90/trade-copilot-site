@@ -529,7 +529,6 @@
       border-radius:15px;
       font-size:14px;
       line-height:1.45;
-      white-space:pre-line;
     }
 
     .tc-bot{
@@ -609,6 +608,70 @@
         left:12px;
         width:auto;
         height:560px;
+
+      .workflow-section{
+        background:linear-gradient(180deg,#ffffff 0%,#f6f9fc 100%);
+        padding:90px 22px;
+      }
+
+      .workflow-line{
+        display:grid;
+        grid-template-columns:repeat(6,1fr);
+        gap:18px;
+        position:relative;
+      }
+
+      .workflow-step{
+        background:white;
+        border:1px solid var(--border);
+        border-radius:24px;
+        padding:24px 18px;
+        text-align:center;
+        box-shadow:var(--shadow);
+        transition:.25s ease;
+      }
+
+      .workflow-step:hover{
+        transform:translateY(-8px);
+        border-color:var(--teal);
+      }
+
+      .workflow-icon{
+        width:56px;
+        height:56px;
+        border-radius:18px;
+        margin:0 auto 16px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:linear-gradient(135deg,#e8fff9,#eef4ff);
+        font-size:28px;
+      }
+
+      .workflow-step h3{
+        color:var(--navy);
+        font-size:18px;
+        margin-bottom:8px;
+      }
+
+      .workflow-step p{
+        color:var(--muted);
+        font-size:14px;
+        line-height:1.45;
+      }
+
+      @media(max-width:1000px){
+        .workflow-line{
+          grid-template-columns:repeat(2,1fr);
+        }
+      }
+
+      @media(max-width:600px){
+        .workflow-line{
+          grid-template-columns:1fr;
+        }
+      }  
+
       }
     }
   </style>
@@ -632,12 +695,13 @@
 <header class="hero">
   <div class="hero-grid">
     <div>
-      <div class="eyebrow">● AI-powered · Built for global trade teams</div>
-      <h1>Generate export documents <strong>in seconds.</strong></h1>
+      <div class="eyebrow">● AI-powered · Built for global trade operations</div>
+      <h1>Automate your entire export workflow <strong>with AI.</strong></h1>
       <p>
-        Trade Copilot helps exporters, importers, freight brokers, and 3PLs generate
-        commercial invoices, packing lists, certificates of origin, and shipment documents
-        with AI-powered automation.
+        Trade Copilot helps exporters, importers, manufacturers, freight forwarders,
+        customs brokers, and 3PLs automate commercial invoices, packing lists,
+        certificates of origin, shipment workflows, and customer communication—
+        all powered by intelligent AI automation.
       </p>
 
       <div class="hero-actions">
@@ -663,6 +727,58 @@
     </div>
   </div>
 </header>
+
+
+<section class="workflow-section">
+  <div class="section-inner">
+    <div class="section-title">
+      <span>End-to-end export workflow</span>
+      <h2>From customer order to shipment delivery, all in one AI-powered workspace.</h2>
+      <p>
+        Trade Copilot connects sales orders, warehouse preparation, document generation,
+        approvals, email delivery, tracking, and analytics into one intelligent export workflow.
+      </p>
+    </div>
+
+    <div class="workflow-line">
+      <div class="workflow-step">
+        <div class="workflow-icon">🧾</div>
+        <h3>Order Upload</h3>
+        <p>Import or enter customer orders and shipment details.</p>
+      </div>
+
+      <div class="workflow-step">
+        <div class="workflow-icon">🏭</div>
+        <h3>Warehouse Prep</h3>
+        <p>Assign dimensions, weights, cartons, and cargo-ready status.</p>
+      </div>
+
+      <div class="workflow-step">
+        <div class="workflow-icon">🤖</div>
+        <h3>AI Documents</h3>
+        <p>Generate CI, PL, CO, BOL, and shipment documents.</p>
+      </div>
+
+      <div class="workflow-step">
+        <div class="workflow-icon">✅</div>
+        <h3>Approval</h3>
+        <p>Review, approve, and control every document before sending.</p>
+      </div>
+
+      <div class="workflow-step">
+        <div class="workflow-icon">📨</div>
+        <h3>Auto Email</h3>
+        <p>Send approved documents automatically to customers or partners.</p>
+      </div>
+
+      <div class="workflow-step">
+        <div class="workflow-icon">🚢</div>
+        <h3>Tracking</h3>
+        <p>Monitor shipment status from ready cargo to final delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="features" class="features">
   <div class="section-inner">
@@ -698,8 +814,13 @@
   <div class="section-inner">
     <div class="section-title">
       <span>Product demo</span>
-      <h2>Show customers the workflow, not just the promise.</h2>
-      <p>A professional video section helps prospects immediately understand what Trade Copilot can do.</p>
+      <h2>See how AI orchestrates your entire export operation.</h2>
+      <p>
+        Follow a shipment from customer order to final delivery and see how
+        Trade Copilot automates documentation, warehouse operations,
+        shipment tracking, approvals, customer communication,
+        and AI-powered workflows in one platform.
+      </p>
     </div>
 
     <div class="video-shell">
@@ -866,7 +987,7 @@
     const box = document.getElementById("tc-messages");
     const msg = document.createElement("div");
     msg.className = sender === "user" ? "tc-msg tc-user" : "tc-msg tc-bot";
-    msg.textContent = text;
+    msg.innerHTML = text.replace(/\n/g, "<br>");
     box.appendChild(msg);
     box.scrollTop = box.scrollHeight;
     return msg;
@@ -898,7 +1019,7 @@
       });
 
       const data = await res.json();
-      loading.textContent = data.response || "I could not answer right now.";
+      loading.innerHTML = (data.response || "I could not answer right now.").replace(/\n/g,"<br>");
 
     }catch(err){
       loading.innerText = "I could not connect right now. Please try again in a moment.";
