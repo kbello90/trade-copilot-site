@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Guide to Incoterms 2020 | Trade Copilot</title>
+  <meta name="description" content="Learn Incoterms 2020 in plain English. Understand who pays, who carries the risk, and how Trade Copilot automates international shipping documents." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#07111f;
+      --navy-2:#0d1b2f;
+      --navy-3:#10243d;
+      --teal:#1DBF9F;
+      --teal-2:#57D9C2;
+      --blue:#2563eb;
+      --white:#ffffff;
+      --light:#f6f9fc;
+      --soft:#eef4fb;
+      --text:#102033;
+      --muted:#64748b;
+      --border:#dbe7f3;
+      --shadow:0 25px 80px rgba(15,35,70,.18);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'DM Sans',sans-serif;
+      color:var(--text);
+      background:var(--white);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner{
+      max-width:1180px;
+      margin:auto;
+      padding:18px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .logo{
+      font-weight:800;
+      font-size:20px;
+      color:var(--navy);
+    }
+
+    .logo span{color:var(--teal)}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      color:var(--muted);
+      font-size:15px;
+      font-weight:600;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{color:var(--navy)}
+
+    .nav-links a.active{
+      position:relative;
+    }
+
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-8px;
+      height:2px;
+      border-radius:999px;
+      background:var(--teal);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      padding:13px 20px;
+      font-weight:800;
+      font-size:15px;
+      transition:.2s;
+    }
+
+    .btn-primary{
+      background:var(--teal);
+      color:white;
+      box-shadow:0 14px 30px rgba(29,191,159,.25);
+    }
+
+    .btn-primary:hover{background:#17a98c;transform:translateY(-1px)}
+
+    .btn-secondary{
+      background:white;
+      color:var(--navy);
+      border:1px solid var(--border);
+    }
+
+    .btn-secondary:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(15,35,70,.12)}
+
+    section{padding:86px 22px}
+
+    .section-inner{
+      max-width:1180px;
+      margin:auto;
+    }
+
+    .section-title{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 52px;
+    }
+
+    .section-title span{
+      color:var(--teal);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:13px;
+    }
+
+    .section-title h2{
+      font-size:clamp(34px,4vw,52px);
+      line-height:1.04;
+      letter-spacing:-1.8px;
+      margin:10px 0 16px;
+      color:var(--navy);
+    }
+
+    .section-title p{
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .hero{
+      background:
+        radial-gradient(circle at 78% 18%,rgba(37,99,235,.22),transparent 30%),
+        radial-gradient(circle at 20% 12%,rgba(29,191,159,.22),transparent 28%),
+        linear-gradient(180deg,#ffffff 0%,#f6f9fc 100%);
+      padding:92px 22px 78px;
+      overflow:hidden;
+    }
+
+    .hero-grid{
+      max-width:1180px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr .95fr;
+      gap:54px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(29,191,159,.08);
+      border:1px solid rgba(29,191,159,.18);
+      color:var(--teal);
+      padding:8px 13px;
+      border-radius:999px;
+      font-family:'DM Mono',monospace;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:24px;
+    }
+
+    .hero h1{
+      font-size:clamp(44px,6vw,76px);
+      line-height:.96;
+      letter-spacing:-3px;
+      font-weight:300;
+      margin-bottom:24px;
+      color:var(--navy);
+    }
+
+    .hero h1 strong{
+      color:var(--teal);
+      font-weight:800;
+    }
+
+    .hero-subtitle{
+      color:var(--navy-3);
+      font-size:22px;
+      line-height:1.35;
+      max-width:660px;
+      margin-bottom:20px;
+      font-weight:700;
+    }
+
+    .hero-copy{
+      color:var(--muted);
+      font-size:17px;
+      max-width:660px;
+      margin-bottom:18px;
+    }
+
+    .hero-image-card{
+      padding:14px;
+      border-radius:30px;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(219,231,243,.9);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      transform:rotate(1deg);
+    }
+
+    .hero-image-card img{
+      width:100%;
+      border-radius:22px;
+      box-shadow:0 18px 54px rgba(15,35,70,.12);
+    }
+
+    .split-grid{
+      display:grid;
+      grid-template-columns:1fr .82fr;
+      gap:36px;
+      align-items:start;
+    }
+
+    .content-panel{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:34px;
+      box-shadow:0 18px 54px rgba(15,35,70,.1);
+    }
+
+    .content-panel h2,
+    .content-panel h3{
+      color:var(--navy);
+      line-height:1.05;
+      letter-spacing:-1px;
+      margin-bottom:16px;
+    }
+
+    .content-panel h2{font-size:clamp(32px,4vw,46px)}
+    .content-panel h3{font-size:28px}
+
+    .content-panel p{
+      color:var(--muted);
+      font-size:16px;
+      margin-bottom:16px;
+    }
+
+    .highlight-card{
+      background:
+        radial-gradient(circle at top right,rgba(29,191,159,.14),transparent 34%),
+        linear-gradient(180deg,rgba(255,255,255,.98),rgba(248,251,255,.95));
+      border:1px solid rgba(219,231,243,.95);
+      border-radius:26px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .check-list{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin:22px 0;
+    }
+
+    .check-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .check-list li::before{
+      content:"\2713";
+      color:var(--teal);
+      font-weight:800;
+    }
+
+    .note{
+      margin-top:18px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      color:#9a3412;
+      font-weight:800;
+    }
+
+    .image-section{
+      background:var(--light);
+    }
+
+    .image-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:30px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+
+    .image-card img{
+      width:100%;
+      border-radius:22px;
+    }
+
+    .caption{
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      margin-top:18px;
+    }
+
+    .incoterm-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .term-card,
+    .mistake-card,
+    .feature-chip{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 18px 54px rgba(15,35,70,.1);
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    }
+
+    .term-card:hover,
+    .mistake-card:hover,
+    .feature-chip:hover{
+      transform:translateY(-8px);
+      border-color:rgba(29,191,159,.55);
+      box-shadow:0 28px 74px rgba(15,35,70,.16);
+    }
+
+    .term-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .term-code{
+      font-family:'DM Mono',monospace;
+      font-size:22px;
+      color:var(--navy);
+      font-weight:800;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--navy);
+      background:linear-gradient(135deg,#e8fff9,#eef4ff);
+      border:1px solid rgba(29,191,159,.22);
+      flex:0 0 auto;
+    }
+
+    .icon svg{
+      width:24px;
+      height:24px;
+      stroke:currentColor;
+      stroke-width:1.9;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .term-card h3{
+      color:var(--navy);
+      font-size:20px;
+      line-height:1.1;
+      margin-bottom:10px;
+    }
+
+    .term-card p,
+    .mistake-card p{
+      color:var(--muted);
+      font-size:15px;
+      margin-bottom:12px;
+    }
+
+    .best-used{
+      display:inline-flex;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(29,191,159,.08);
+      color:var(--teal);
+      font-weight:800;
+      font-size:12px;
+    }
+
+    .mistakes{
+      background:var(--light);
+    }
+
+    .mistake-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+    }
+
+    .mistake-card{
+      border-color:#fed7aa;
+      background:linear-gradient(180deg,#ffffff,#fffaf5);
+    }
+
+    .mistake-card .icon{
+      background:#fff7ed;
+      border-color:#fed7aa;
+      color:#c2410c;
+      margin-bottom:18px;
+    }
+
+    .code-section{
+      background:
+        radial-gradient(circle at 78% 10%,rgba(29,191,159,.16),transparent 30%),
+        linear-gradient(180deg,#ffffff,#f6f9fc);
+    }
+
+    .code-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .code-block{
+      background:#07111f;
+      color:#dbeafe;
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 24px 70px rgba(7,17,31,.28);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .code-block h3{
+      color:white;
+      font-size:20px;
+      margin-bottom:16px;
+    }
+
+    pre{
+      white-space:pre-wrap;
+      font-family:'DM Mono',monospace;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .good{color:var(--teal-2)}
+    .bad{color:#fca5a5}
+
+    .platform-section{
+      background:white;
+    }
+
+    .feature-card-large{
+      background:
+        radial-gradient(circle at top right,rgba(37,99,235,.16),transparent 34%),
+        linear-gradient(135deg,#07111f,#10243d);
+      color:white;
+      border-radius:30px;
+      padding:34px;
+      box-shadow:0 28px 90px rgba(7,17,31,.32);
+    }
+
+    .feature-card-large h3{
+      color:white;
+      font-size:28px;
+      line-height:1.05;
+      margin-bottom:22px;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .feature-chip{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.12);
+      color:#dbeafe;
+      box-shadow:none;
+    }
+
+    .feature-chip:hover{
+      transform:translateY(-3px);
+      border-color:rgba(87,217,194,.45);
+      box-shadow:0 16px 34px rgba(0,0,0,.16);
+    }
+
+    .feature-chip .mini-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--teal-2);
+      box-shadow:0 0 16px rgba(87,217,194,.55);
+      flex:0 0 auto;
+    }
+
+    .faq-list{
+      max-width:900px;
+      margin:auto;
+      display:grid;
+      gap:14px;
+    }
+
+    .faq-item{
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:white;
+      box-shadow:0 16px 44px rgba(15,35,70,.08);
+      overflow:hidden;
+    }
+
+    .faq-question{
+      width:100%;
+      border:none;
+      background:white;
+      color:var(--navy);
+      padding:22px 24px;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:center;
+      cursor:pointer;
+      font-family:inherit;
+      font-size:18px;
+      font-weight:800;
+      text-align:left;
+    }
+
+    .faq-question span{
+      color:var(--teal);
+      font-size:24px;
+      line-height:1;
+      transition:transform .2s ease;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .25s ease;
+    }
+
+    .faq-answer p{
+      color:var(--muted);
+      padding:0 24px 22px;
+    }
+
+    .faq-item.open .faq-answer{max-height:180px}
+    .faq-item.open .faq-question span{transform:rotate(45deg)}
+
+    .cta-section{
+      background:linear-gradient(135deg,#07111f,#10243d);
+      color:white;
+    }
+
+    .cta-box{
+      max-width:980px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:28px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:28px;
+      padding:38px;
+    }
+
+    .cta-box h2{
+      font-size:38px;
+      line-height:1.05;
+      margin-bottom:12px;
+    }
+
+    .cta-box p{color:#b8c8dc}
+
+    .cta-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    footer{
+      background:var(--navy);
+      color:#b8c8dc;
+      padding:46px 22px;
+    }
+
+    .footer-inner{
+      max-width:1180px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .footer-inner strong{
+      color:white;
+      font-size:20px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a:hover{color:white}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+
+    .reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:1000px){
+      .hero-grid,
+      .split-grid,
+      .code-grid,
+      .cta-box{
+        grid-template-columns:1fr;
+      }
+
+      .incoterm-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .mistake-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .cta-actions{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:760px){
+      .nav-links{display:none}
+
+      section{padding:68px 18px}
+
+      .hero{
+        padding:74px 18px 64px;
+      }
+
+      .hero h1{
+        letter-spacing:-2px;
+      }
+
+      .incoterm-grid,
+      .mistake-grid,
+      .feature-grid{
+        grid-template-columns:1fr;
+      }
+
+      .content-panel,
+      .highlight-card,
+      .feature-card-large{
+        padding:24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="logo" href="index.html">Trade<span>Copilot</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">Workflow</a>
+        <a href="incoterms.html" class="active">Incoterms</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#demo" class="btn btn-primary">Book Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">GUIDE</div>
+        <h1>The Complete Guide to <strong>Incoterms&reg; 2020</strong></h1>
+        <p class="hero-subtitle">Learn who pays, who carries the risk, and how to choose the right Incoterm for every international shipment.</p>
+        <p class="hero-copy">Whether you're exporting for the first time or shipping hundreds of containers every month, choosing the wrong Incoterm can create unexpected transportation costs, customs delays, insurance disputes, and unhappy customers.</p>
+        <p class="hero-copy">This guide explains every Incoterm in plain English, shows exactly when risk transfers from seller to buyer, and helps you avoid the most common mistakes exporters make.</p>
+      </div>
+
+      <div class="hero-image-card reveal">
+        <img src="imagine/inco.png" alt="Incoterms 2020 responsibility timeline" fetchpriority="high" decoding="async">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-inner split-grid">
+        <div class="content-panel reveal">
+          <h2>What are Incoterms?</h2>
+          <p>Incoterms are internationally recognized trade rules published by the International Chamber of Commerce. They help buyers and sellers define who is responsible for transportation, export handling, import handling, insurance, and risk at each point in an international shipment.</p>
+          <p>They do not replace a sales contract, purchase order, payment agreement, or logistics plan. Instead, they create a shared language so everyone understands where the seller's responsibility ends and the buyer's responsibility begins.</p>
+        </div>
+
+        <aside class="highlight-card reveal">
+          <h3>What Incoterms define</h3>
+          <ul class="check-list">
+            <li>Transportation responsibility</li>
+            <li>Cost allocation</li>
+            <li>Risk transfer</li>
+            <li>Export clearance</li>
+            <li>Import clearance</li>
+          </ul>
+          <div class="note">Incoterms DO NOT define ownership or payment terms.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="image-section">
+      <div class="section-inner reveal">
+        <div class="image-card">
+          <img src="imagine/inco.png" alt="Incoterms responsibility timeline showing cost and risk transfer" loading="lazy" decoding="async">
+        </div>
+        <p class="caption">Incoterms responsibility timeline showing where costs and risks transfer between seller and buyer.</p>
+      </div>
+    </section>
+
+    <section id="terms">
+      <div class="section-inner">
+        <div class="section-title reveal">
+          <span>The 11 Incoterms</span>
+          <h2>Choose the rule that matches the shipment, handoff, and risk profile.</h2>
+          <p>Each Incoterm defines a different operating model for cost, control, and delivery responsibility.</p>
+        </div>
+
+        <div class="incoterm-grid">
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">EXW</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 5l9 5.5"/><path d="M5 10v10h14V10"/><path d="M8 14h8"/></svg></div></div>
+            <h3>Ex Works</h3>
+            <p>Seller makes goods available at their premises. Buyer handles nearly everything after pickup.</p>
+            <span class="best-used">Best for domestic-style pickups</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">FCA</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 17V7h10v10"/><path d="M14 10h4l2 3v4h-6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div></div>
+            <h3>Free Carrier</h3>
+            <p>Seller delivers goods to a named carrier or place after export clearance.</p>
+            <span class="best-used">Best for container shipments</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">FAS</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 18h18"/><path d="M6 15h12l-2-6H8z"/><path d="M12 9V4"/></svg></div></div>
+            <h3>Free Alongside Ship</h3>
+            <p>Seller delivers goods alongside the vessel at the named port of shipment.</p>
+            <span class="best-used">Best for bulk ocean cargo</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">FOB</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 17h18l-2 4H5z"/><path d="M6 13h12l-2-6H8z"/><path d="M12 7V3"/></svg></div></div>
+            <h3>Free On Board</h3>
+            <p>Seller delivers goods loaded on board the vessel. Risk transfers once goods are on board.</p>
+            <span class="best-used">Best for non-container ocean freight</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">CFR</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 16h10l2-5H5z"/><path d="M9 11V6h6v5"/></svg></div></div>
+            <h3>Cost and Freight</h3>
+            <p>Seller pays ocean freight to destination port, but risk transfers when goods load on vessel.</p>
+            <span class="best-used">Best for ocean freight without insurance</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">CIF</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6z"/><path d="M9 12l2 2 4-5"/></svg></div></div>
+            <h3>Cost, Insurance and Freight</h3>
+            <p>Seller pays freight and minimum insurance to destination port, while risk transfers earlier.</p>
+            <span class="best-used">Best for ocean shipments needing seller insurance</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">CPT</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h11v10H4z"/><path d="M15 10h4l2 3v3h-6"/><circle cx="8" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg></div></div>
+            <h3>Carriage Paid To</h3>
+            <p>Seller pays carriage to a named destination, but risk transfers to buyer at carrier handoff.</p>
+            <span class="best-used">Best for multimodal transport</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">CIP</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6z"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></div></div>
+            <h3>Carriage and Insurance Paid To</h3>
+            <p>Seller pays carriage and higher insurance coverage to the named destination.</p>
+            <span class="best-used">Best for air and multimodal insured shipments</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">DAP</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-4.4 7-11a7 7 0 0 0-14 0c0 6.6 7 11 7 11z"/><circle cx="12" cy="10" r="2"/></svg></div></div>
+            <h3>Delivered at Place</h3>
+            <p>Seller delivers goods ready for unloading at the named destination. Buyer handles import clearance.</p>
+            <span class="best-used">Best for seller-controlled delivery</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">DPU</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v7H4z"/><path d="M8 13v5"/><path d="M16 13v5"/><path d="M6 18h12"/></svg></div></div>
+            <h3>Delivered at Place Unloaded</h3>
+            <p>Seller delivers and unloads goods at the named destination place.</p>
+            <span class="best-used">Best when seller controls unloading</span>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-top"><div class="term-code">DDP</div><div class="icon"><svg viewBox="0 0 24 24"><path d="M20 7 10 17l-5-5"/><path d="M4 20h16"/><path d="M6 4h12"/></svg></div></div>
+            <h3>Delivered Duty Paid</h3>
+            <p>Seller carries the most responsibility, including import clearance and duties at destination.</p>
+            <span class="best-used">Best for fully managed delivery</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mistakes">
+      <div class="section-inner">
+        <div class="section-title reveal">
+          <span>Common mistakes</span>
+          <h2>Avoid the Incoterm errors that create cost and delivery problems.</h2>
+        </div>
+
+        <div class="mistake-grid">
+          <article class="mistake-card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 4.3 2 19h20L13.7 4.3a2 2 0 0 0-3.4 0z"/></svg></div><h3>Using FOB for containers</h3><p>Container cargo is usually handed to a carrier before vessel loading, which often makes FCA a better fit.</p></article>
+          <article class="mistake-card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-4.4 7-11a7 7 0 0 0-14 0c0 6.6 7 11 7 11z"/><circle cx="12" cy="10" r="2"/></svg></div><h3>Forgetting the named place</h3><p>An Incoterm without a place leaves teams guessing where cost and risk transfer.</p></article>
+          <article class="mistake-card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6z"/><path d="M12 8v5"/></svg></div><h3>Ignoring insurance</h3><p>Only CIF and CIP require the seller to provide insurance, and coverage levels differ.</p></article>
+          <article class="mistake-card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M7 3h10v18H7z"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h3"/></svg></div><h3>Not specifying Incoterms 2020</h3><p>Always name the rule version so buyers, sellers, forwarders, and banks apply the same standard.</p></article>
+          <article class="mistake-card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/></svg></div><h3>Thinking Incoterms define payment</h3><p>Incoterms do not decide title transfer, payment timing, credit terms, or ownership.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="code-section">
+      <div class="section-inner">
+        <div class="section-title reveal">
+          <span>How to write them</span>
+          <h2>Use the rule, named place, and Incoterms&reg; 2020 version.</h2>
+        </div>
+
+        <div class="code-grid">
+          <div class="code-block reveal">
+            <h3>Correct examples</h3>
+            <pre class="good">FOB Shanghai Incoterms&reg; 2020
+DAP Dallas Texas Incoterms&reg; 2020
+CIP Hamburg Airport Incoterms&reg; 2020</pre>
+          </div>
+
+          <div class="code-block reveal">
+            <h3>Incorrect examples</h3>
+            <pre class="bad">FOB
+DAP
+CIF</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="platform-section">
+      <div class="section-inner split-grid">
+        <div class="content-panel reveal">
+          <h2>Trade Copilot simplifies international shipping.</h2>
+          <p>Trade Copilot helps export teams turn shipment data into complete, reviewable, and deliverable trade workflows. Instead of managing documents, approvals, customer updates, and shipment records across disconnected tools, your team can operate from one AI-powered workspace.</p>
+          <p>The platform automates Commercial Invoice, Packing List, Certificate of Origin, Bill of Lading, Shipment Tracking, Approvals, Customer Communication, HTS Codes, and AI Assistant workflows.</p>
+        </div>
+
+        <aside class="feature-card-large reveal">
+          <h3>AI export operations in one place</h3>
+          <div class="feature-grid">
+            <div class="feature-chip"><span class="mini-dot"></span>Commercial Invoice</div>
+            <div class="feature-chip"><span class="mini-dot"></span>Packing List</div>
+            <div class="feature-chip"><span class="mini-dot"></span>Certificate of Origin</div>
+            <div class="feature-chip"><span class="mini-dot"></span>Bill of Lading</div>
+            <div class="feature-chip"><span class="mini-dot"></span>Shipment Tracking</div>
+            <div class="feature-chip"><span class="mini-dot"></span>Approvals</div>
+            <div class="feature-chip"><span class="mini-dot"></span>Customer Communication</div>
+            <div class="feature-chip"><span class="mini-dot"></span>HTS Codes</div>
+            <div class="feature-chip"><span class="mini-dot"></span>AI Assistant</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-title reveal">
+          <span>FAQ</span>
+          <h2>Incoterms questions exporters ask most often.</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item reveal open">
+            <button class="faq-question" type="button">What is an Incoterm?<span>+</span></button>
+            <div class="faq-answer"><p>An Incoterm is an international trade rule that defines responsibilities between seller and buyer for delivery, costs, and risk transfer.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">Which Incoterm is most common?<span>+</span></button>
+            <div class="faq-answer"><p>Common choices include FCA, FOB, CIF, DAP, and DDP, but the right rule depends on transport mode, control, insurance, and destination responsibilities.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">Does Incoterms determine ownership?<span>+</span></button>
+            <div class="faq-answer"><p>No. Incoterms do not define title transfer, ownership, payment timing, or credit terms. Those belong in the sales contract.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">Who pays freight?<span>+</span></button>
+            <div class="faq-answer"><p>It depends on the Incoterm. For example, CFR, CIF, CPT, and CIP require the seller to pay main carriage, while EXW and FCA shift more freight responsibility to the buyer.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">Which Incoterm should I use?<span>+</span></button>
+            <div class="faq-answer"><p>Use the rule that matches your delivery control, transport mode, risk tolerance, insurance needs, and customer agreement. For container exports, FCA is often more precise than FOB.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-box reveal">
+        <div>
+          <h2>Ready to simplify your export operations?</h2>
+          <p>Use Trade Copilot to automate trade documents, approvals, shipment tracking, and customer communication from one AI-powered workspace.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="index.html#demo" class="btn btn-primary">Start Free Trial</a>
+          <a href="index.html#demo" class="btn btn-secondary">Book Demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>TradeCopilot</strong>
+        <p>AI-powered trade operations platform for exporters, importers, freight brokers, and 3PLs.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">Workflow</a>
+        <a href="incoterms.html">Incoterms</a>
+        <a href="index.html#pricing">Pricing</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if("IntersectionObserver" in window){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.14});
+
+      revealItems.forEach((item) => observer.observe(item));
+    }else{
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        item.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>
